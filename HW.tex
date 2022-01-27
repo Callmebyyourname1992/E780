@@ -197,17 +197,23 @@ The formular for Q will become:\\
 \item Question 5\\
 Yes, by theorem 2.3. we have $d=\frac{2}{3} \leq 1+R =1+0=1 \leq \frac{3}{2}$. Hence the market is arbitrage free.
 
-We have two equation.\\
+To create a replica porfolio. Note that this model now have 3 two period.
+we have:
+$$\phi(\frac{9}{4}) = 1, \phi(1) = 0 , \phi(\frac{4}{9})= 0$$
 
-$$(1+R)x +\frac{9}{4}sy = \phi(\frac{9}{4}) = 1$$\\
-$$(1+R)x +sdy = \phi(d) = 0$$
-For some $d < \frac{9}{4}$
-substituting $s = 1, R = 0$, solve the system of these two equation. We have.\\
-$$h=(x,y)=(\frac{4d}{4d-9},\frac{4}{9-4d})$$\\
-At date zero, the price of X will be:
 
-$$X_0 = {V_h}^0 = x+ys = x+y = \frac{4d-4}{4d-9}$$
-For some $d<\frac{9}{4}$
+$$\frac{3}{2} = q_u \frac{9}{4} +(1-q_u)*1 \implies q_u = 0.4$$
+Implies $$X_1 = \frac{1}{1+0}0.4 * \frac{9}{4} + 0.6*1 = 0.4$$
+Similarly, in the lower node. $X_1 = 0$
+$X_0 = \frac{4}{25}$.\\
+
+now compute h at node 0.
+$$x_0 = \frac{\frac{2}{3}0.4-\frac{3}{2}*0}{\frac{3}{2}-\frac{2}{3}} = -\frac{8}{25}$$
+Similarly $y_0 = \frac{12}{25}$
+Now we are facing claim: $\frac{9}{4}, 0$. using similar strategy, we can compute: $x_1 = -\frac{4}{5},y_1= \frac{2}{3} \frac{1}{\frac{5}{4}} = \frac{8}{15}$.
+At node facing the claim $(0,0), x_1,y_1) = (0,0)$
+
+
 
 
 
@@ -219,8 +225,7 @@ For some $d<\frac{9}{4}$
 
 \item Question 6
 
-If t time $t=1$, the stock price gone up to 120, and the price of option is 50. We can buy this option at 50, claim 52.5 so we got 2.5 free money. Turn this money to bond and we can make an arbitrage profit
-
+If at node 120, the option price is 50. We can make "free profit" by buying the option with price 50, and shorting the replica porfolio $(-42.5,\frac{95}{120}$. hence we immediately have 2.5 dollar, put it in the free interest bond. at period T. the replica porfolio and the option will cancel each other, and we get 2.5 dollar profit with zero investment’s.
 
 \item Question 7.
 
@@ -282,7 +287,83 @@ $$n^3 = \frac{n^2(n+1)^2}{4}.$$
 
 
 
-\item Question 8
+\item Question 8\\
+Given:\\
+$V_t^h=xB_t+yS_t$ as A\\
+$B_t=1+R$ as B\\
+$X_t=\frac{1}{1+R}\frac{uV_t(k)-dV_t(k+1)}{u-d}$ as D\\
+$y_t(k)=\frac{1}{S_{t-1}}\frac{V_t(k+1)-V_t(k)}{u-d}$ as E\\
+\\
+Plugging B, D, and E into A yields:\\
+$$V_t^h=\frac{v_t(k)[S_{t-1}u-s_t+v_t{k+1}[-S_d+s_t]}{S_{t-1}(u-d)}$$\\
+\\
+By simplifying and combining like fractions we find:\\
+$$V_t^h=\frac{V_t(k)[S_{t-1}u-S_t]+V_t(k+1)[-S_{t-1}d+S_t]}{S_{t-1}(u-d)}$$\\
+\\
+We are then able to apply $t=0$, $k=0$\\
+$$V_0(0)=\frac{V_0(0)[S_{-1}u-S_0]+V_0(1)[-S_{-1}d+S_0]}{S_{-1}d+S_0}$$\\
+\\
+Using C, we find that $S_{-1}=\frac{s}{d}$ and $S_0=S$, which we plug in\\
+$$V_0(0)=\frac{V_0(0)[\frac{s}{d}u-s+V_0(1)[\frac{-s}{d}d+S]}{\frac{s}{d}(u-d)}=\frac{d}{s}\frac{V_0(0)[\frac{s}{d}u-s]}{(u-d)}$$\\
+\\
+$$V_0(0)=\frac{dV_0(0)[\frac{u}{d}-1]}{u-d}=\frac{V_0(0)[u-d]}{u-d}$$\\
+\\
+Which produces the equality:\\
+$$V_0(0)=V_0(0)$$\\
+\\
+Thus validating this equation's preservation of the identity of $V_0(0)$\\
+
+
+
+
+
+
+2.8
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\end{proof}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 \end{enumerate}
 \end{document}
 
