@@ -1,0 +1,557 @@
+\documentclass[12pt]{article}
+
+\usepackage[utf8]{inputenc}
+
+
+\usepackage{amsmath, amssymb, amsfonts, amsthm, mathrsfs, bm}
+%\usepackage{array, multirow}
+\usepackage{color, float, graphicx, caption, subcaption}
+\usepackage{comment}
+
+\usepackage{mathtools}%for paired delimiters
+
+\usepackage{hyperref}
+
+\renewcommand{\arraystretch}{1.0}
+
+\captionsetup{font=small}
+\usepackage{setspace}
+\setstretch{1.0}
+%\setlength\topmargin{0in}
+%\setlength\textheight{8in}
+%\setlength\textwidth{5.5in}
+%\setlength\evensidemargin{.5in}
+%\setlength\oddsidemargin{.5in}
+
+\setlength\topmargin{-.45in}
+\setlength\textheight{8.5in}
+\setlength\textwidth{6in}
+\setlength\evensidemargin{.25in}
+\setlength\oddsidemargin{.25in}
+
+
+\graphicspath{{InkscapePics/}}
+
+\newcommand{\executeiffilenewer}[3]{%
+ \ifnum\pdfstrcmp{\pdffilemoddate{#1}}%
+ {\pdffilemoddate{#2}}>0%
+ {\immediate\write18{#3}}\fi%
+}
+\newcommand{\includesvg}[1]{%
+ \executeiffilenewer{#1.svg}{#1.pdf}%
+ {inkscape -z -D --file=#1.svg %
+ --export-pdf=#1.pdf --export-latex}%
+ \input{#1.pdf_tex}%
+}
+
+
+\DeclarePairedDelimiter\ceil{\lceil}{\rceil}
+
+
+\renewcommand{\a}{\alpha}
+\renewcommand{\b}{\beta}
+\renewcommand{\d}{\delta}
+\newcommand{\e}{\varepsilon}
+\newcommand{\g}{\gamma}
+\renewcommand{\k}{\kappa}
+\renewcommand{\l}{\lambda}
+\newcommand{\m}{\mu}
+\renewcommand{\o}{\omega}
+\newcommand{\p}{\rho}
+\newcommand{\s}{\sigma}
+\renewcommand{\t}{\tau}
+\renewcommand{\th}{\theta}
+\newcommand{\z}{\zeta}
+
+
+\newcommand{\ba}{\bm{a}}
+\newcommand{\bg}{\bm{\gamma}}
+\newcommand{\bp}{\bm{p}}
+\newcommand{\bq}{\bm{q}}
+\newcommand{\bmm}{\bm{m}}
+\newcommand{\bmu}{\bm{\mu}}
+\newcommand{\bnu}{\bm{\nu}}
+\newcommand{\bw}{\bm{w}}
+\newcommand{\bx}{\bm{x}}
+\newcommand{\bpi}{\bm{\pi}}
+\newcommand{\bs}{\bm{\sigma}}
+\newcommand{\bS}{\bm{\Sigma}}
+\newcommand{\bth}{\bm{\theta}}
+\newcommand{\bu}{\bm{u}}
+\newcommand{\bv}{\bm{v}}
+
+\newcommand{\bA}{\bm{A}}
+\newcommand{\bH}{\bm{H}}
+\newcommand{\bM}{\bm{M}}
+\newcommand{\bW}{\bm{W}}
+\newcommand{\bX}{\bm{X}}
+
+\newcommand{\rp}{{_{r}p}}
+\newcommand{\rD}{{_{r}\D}}
+\newcommand{\sD}{{_{s}\D}}
+
+
+
+\newcommand{\A}{\mathcal{A}}
+\newcommand{\C}{\mathcal{C}}
+\newcommand{\D}{\Delta}
+\newcommand{\mD}{\mathcal{D}}
+\newcommand{\E}{\mathcal{E}}
+\newcommand{\F}{\mathcal{F}}
+\newcommand{\G}{\mathscr{G}}
+\renewcommand{\H}{\mathcal{H}}
+\newcommand{\I}{\mathcal{I}}
+\newcommand{\M}{\mathcal{M}}
+\renewcommand{\O}{\Omega}
+\newcommand{\Pt}{\mathscr{P}}
+\renewcommand{\P}{\mathcal{P}}
+\newcommand{\Q}{\mathcal{Q}}
+\newcommand{\R}{\mathbb{R}}
+\renewcommand{\S}{\mathcal{S}}
+\newcommand{\T}{\mathcal{T}}
+\newcommand{\Th}{\Theta}
+\newcommand{\Y}{\mathcal{Y}}
+\newcommand{\V}{\mathscr{V}}
+\newcommand{\Z}{\mathbb{Z}}
+
+
+\newcommand{\ol}{\overline}
+\newcommand{\oll}[1]{\overline{\overline{ #1}}}
+\newcommand{\ul}{\underline}
+\newcommand{\Ex}{\mathbf{E}}
+\renewcommand{\Pr}{\mathbf{P}}
+\newcommand{\td}{\tilde}
+\newcommand{\tr}{\triangleleft}
+
+\newtheorem{lemma}{Lemma}
+\newtheorem*{example}{Example}
+\newtheorem{theorem}{Theorem}
+\newtheorem{proposition}{Proposition}
+\newtheorem*{definition}{Definition}
+\newtheorem*{maxminrefinement}{Max-Min Threshold Refinement}
+\newtheorem*{multimaxminrefinement}{Multi-Worker Max-Min Threshold Refinement}
+\newtheorem*{refinement}{An Intuitive Credible Threats Refinement}
+\newtheorem*{minrefinement}{Minimal Refinement}
+\newtheorem{corollary}{Corollary}
+\newtheorem{observation}{Observation}
+\newtheorem{remark}{Remark}
+\newtheorem{assumption}{Assumption}
+\newtheorem*{efficiency}{Efficiency Wage Contract}
+
+\DeclareMathOperator*{\argmax}{arg\,max}
+\DeclareMathOperator*{\argmin}{arg\,min}
+\DeclareMathOperator{\sgn}{sgn}
+
+
+
+\begin{document}
+
+Chapter 2
+
+\begin{enumerate}
+  \item Download and familiarize yourself with LaTeX and Inkscape.
+  \item A one period model is completely specified by its two prices processes $B$ and $S$. Consider two versions of the one period model, $(B', S')$ and $(B'', S'')$, both arbitrage free.
+  \begin{itemize}
+    \item Suppose $B'_1 = B''_1$ and $S'_t = \a S''_t$ for $t = 0, 1$ for some positive constant $\a$. What is the relationship between their martingale measures?
+    \item Suppose $B'_1 = B''_1$, $S'_t = \a S''_t$ for $t = 1$, but $S'_0 > \a S''_0$ for some positive constant $\a$. What is the relationship between their martingale measures?
+    \item Suppose $B'_1 < B''_1$ and $S'_t = \a S''_t$ for $t = 0, 1$ for some positive constant $\a$. What is the relationship between their martingale measures?
+  \end{itemize}
+  \item Exercise 2.1.
+  \item Suppose we modified the one period model in the following way: $B_0 = b_0$ and $B_1 = b_1$ for some positive constants $b_0$ and $b_1$. $S$ is still the same as in the book. Notice, the concepts of portfolios, value processes, and arbitrage still make sense in the modified model.
+  \begin{itemize}
+    \item What should be the statement of Proposition 2.3?
+    \item What should be the statement of Definition 2.4?
+    \item What should be the formula for $Q$?
+  \end{itemize}
+  \item[] \textbf{In Class}: As a student, you are usually just handed models and you take it for granted that they are the ``right" ones. In the real world, you need to create the ``right" model. There is a big gap between being able to solve problems in a model given to you and figuring what is the ``right" model to use. This exercise helps us think a little more like in the real world.
+  \\
+  \\
+  Create a one period trinomial model in the spirit of the binomial model. What should the concepts of portfolios, value processes, and arbitrage be?
+  \begin{itemize}
+    \item What should Propositions 2.3, 2.5, 2.6 be?
+    \item How does the trinomial model differ from the binomial model in terms of the pricing of contingent claims?
+  \end{itemize}
+  \item Consider a two period ($T = 2$) binomial model with a stock $S$ and a bond $B$. Assume $S_0 = B_0 = 1$ and $R = 0, d = \frac{2}{3}, u = \frac{3}{2}$.
+  \begin{itemize}
+    \item Is the market arbitrage free?
+    \item Introduce the contingent claim $X = \Phi(S_2)$ where $\Phi(\frac{9}{4}) = 1$ and $\Phi$ is zero for all other values of $S_2$. Write down a replicating portfolio strategy $h$ for $X$. What is the date 0 arbitrage free price of $X$?
+  \end{itemize}
+  \item Exercise 2.3.
+  \item Familiarize yourself with induction.
+  \begin{itemize}
+    \item Prove $1^3 + \ldots + n^3 = \frac{n^2(n+1)^2}{4}$ for all positive integers $n$.
+    \item Prove $4^n + 15n - 1$ is divisible by 9 for all positive integers $n$.
+  \end{itemize}
+  \item Exercise 2.4.
+\end{enumerate}
+
+Chapter 3
+
+\begin{enumerate}
+  \item Example of Farkas' Lemma: Suppose $\R^N = \R^3$, and there are 4 column vectors $d_0, d_1 = (1, 0, 0), d_2 = (0, 1, 0), d_3 = (0, 0, 1)$.
+  \begin{itemize}
+    \item Suppose $d_0 = (1, 1, 1)$. Prove directly that there exists a solution to Problem 1 but not Problem 2.
+    \item Suppose $d_0 = (a, b, c)$ with $a, b, c \geq 0$. Prove directly that there exists a solution to Problem 1 but not Problem 2.
+    \item Suppose $d_0 = (-1, -1, -1)$. Prove directly that there exists a solution to Problem 2 but not Problem 1.
+    \item Suppose $d_0 = (a, b, c)$ such at least one coordinate is negative. Prove directly that there exists a solution to Problem 2 but not Problem 1.
+  \end{itemize}
+  \item Recall the matrix $D$ from chapter 3. Introduce the matrix $\ol{D}$: The first column is the date 0 price of the assets while the rest of the matrix is $D$. Assume as in the book $P(\o_j) > 0$ for all $j$.
+  \begin{itemize}
+    \item Consider a $\ol{D}=
+    \left[\begin{array}{llll}
+    1 & 1 & 2 & 3\\
+    \end{array}
+    \right].$ Is there an arbitrage? If so construct an arbitrage portfolio. If not, find \textbf{all} martingale measures of the corresponding $Z$-market.
+    \item Consider $\ol{D}=
+    \left[\begin{array}{llll}
+    1 & 1.2 & 1.2 & 1.2 \\
+    2 & 2.4 & 2.5 & 2.4
+    \end{array}
+    \right]$. Is there an arbitrage? If so construct an arbitrage portfolio. If not, find \textbf{all} martingale measures of the corresponding $Z$-market.
+    \\
+    \\
+    Notice, this market has a risk-free asset with $R = 0.2$. Find a measure $Q$ over the date 1 state space such that for both assets $i = 1, 2$, we have $S_0^i = \frac{1}{1+R} \mathbf{E}^Q S_1^i$. How do you reconcile the existence of $Q$ with your answer to the first bullet point's question?
+  \end{itemize}
+  \item Consider the following trinomial economy:
+  \\
+  \\
+    \begin{tabular}{cccc}
+    &   &   &  120, \,  105\\
+    &   & $\nearrow$& \\
+    \hspace*{20mm}&S(0) = 105, \, B(0) = 100 & $\rightarrow$ & 105, \, 105   \\
+    &   & $\searrow$&     \\
+    &   &   &  100, \,  105\\
+    \end{tabular}\\
+    \begin{itemize}
+      \item Is the market complete? Why or why not?
+      \\
+      \\
+      Define $(AD_{\uparrow}, \, AD_{\rightarrow}, \, AD_{\downarrow})$ as the date 0 prices of the \emph{Arrow-Debreu securities} (a type of contingent claim) that pay 1 if and only if the up state, middle state, and down state occur, respectively.  We now investigate under what conditions the market consisting of the stock, bond, and all three Arrow-Debreu securities remains arbitrage free. 
+      \item Use the stock and bond price dynamics to find two constraints on the values of these AD securities.  Use these constraints to write both $AD_{\uparrow}$ and $AD_{\rightarrow}$ solely as a function of $AD_{\downarrow}$.
+      \item Identify the range of values of $AD_{\downarrow}$ that ensure the market is arbitrage free.
+      \item Introduce the call option with strike $K = 105$. Identify the range of arbitrage-free prices.
+      \item Introduce the call option with strike $K = 100$. Identify the range of arbitrage-free prices.
+This answer is qualitatively different than the pervious one. Why?
+    \end{itemize}
+  \item[] \textbf{In Class}: Consider the following market:
+\begin{align*}
+\ol{D}=
+\left[\begin{array}{llll}
+1 & 0 & 0 & 1\\
+1/2 & 1 & 1 & 1/2
+\end{array}
+\right],
+\end{align*}
+As in the book, denote the two assets by $S^1$ and $S^2$.
+  \begin{itemize}
+    \item Is there a risk-free rate?
+    \item Is the market arbitrage free?
+  \end{itemize}
+  \item[] \textbf{In Class}: If $(S^1, S^2)$ contains an arbitrage, is it possible for $(S^1, S^2, S^3)$ to be arbitrage free for some $S^3$?
+  \item[] \textbf{In Class}: If $(S^1, S^2)$ is arbitrage free and complete, is it possible for $(S^1, S^2, S^3)$ to be arbitrage free but incomplete for some $S^3$?
+  \item[] \textbf{In Class}: Suppose there exist $S^i$, $S^j$ such that $S^i_0 = S^j_0$, $S^i_1(\o_k) \geq S^j_1(\o_k)$ for all $k$ and there exists some $k^*$ such that $S^i_1(\o_{k^*}) > S^j_1(\o_{k^*})$. Prove the market is not arbitrage free.
+  \item[] \textbf{In Class}: Consider three hypothetical Kalshi contracts: 1. Next month fed will raise rates. 2. Next month unemployment will rise. 3. Next month fed will raise rates and unemployment will fall.
+  \begin{itemize}
+    \item Suppose right now, the prices for these contracts are $x$, $y$, and $z$. How would you go about telling if there is arbitrage?
+  \end{itemize}
+  \item Recall the matrix $D$ from chapter 3. Introduce the matrix $\ol{D}$: The first column is the date 0 price of the assets while the rest of the matrix is $D$. Assume as in the book $P(\o_j) > 0$ for all $j$. Consider the following market:
+\begin{align*}
+\ol{D}=
+\left[\begin{array}{llll}
+1 & 2 & 2 & 3\\
+1 & 0 & 3 & 3
+\end{array}
+\right],
+\end{align*}
+As in the book, denote the two assets by $S^1$ and $S^2$. 
+  \begin{itemize}
+    \item Is there a risk-free rate for this market?
+    \item Fixing $S^1$ as numeraire, what are all the martingale measures?
+    \item Describe another asset $S^3$ such that the market $(S^1, S^2, S^3)$ is complete \emph{but not arbitrage free}.
+    \item Introduce the asset $X$ where $X_0 = 1$ and $X_1 = [3\ 0\ \frac{8}{3}]$ and consider the market $(S^1, S^2, X)$. Fixing $S^1$ as numeraire, is there a martingale measure? If so what is it? If not, find an arbitrage portfolio.
+  \end{itemize}
+  \item Consider the following market
+\begin{align*}
+\ol{D} = \begin{bmatrix}
+1	& 2	& 2	& 2\\
+2	& 8	& 4	& 2
+\end{bmatrix}
+\end{align*}
+As in the book, denote the two assets by $S^1$ and $S^2$.
+
+\begin{itemize}
+  \item[a.] Create the normalized market by choosing $S^1$ as numeraire. Find all martingale measures. 
+  
+  Express you answer in the following way: Let $q_1$ denote the probability of $\o_1$ under an arbitrary martingale measure. Characterize the set of martingale measures by stating what values $q_1$ can take, and, for each such $q_1$, what are the corresponding probabilities for $\o_2$ and $\o_3$.
+  
+  For example, you could write: ``\textit{the set of martingale measures is} $\{(q_1, \frac{1}{2} + q_1, \frac{1}{2} - 2 q_1)\ \vert\ q_1 \in (0, \frac{1}{4})\}$." (This is the wrong answer of course).
+
+\begin{comment}  
+  \textit{Solution}: The normalized market is
+  \begin{align*}
+  \ol{Z} = \begin{bmatrix}
+  1	& 1	& 1	& 1\\
+  2	& 4	& 2	& 1
+  \end{bmatrix}
+  \end{align*}
+  Let $(q_1, q_2, q_3)$ be a martingale measure. The conditions on the $q$'s are: $q_i \in (0, 1)$ for all $i$, $1 = q_1 + q_2 + q_3$, and $2 = 4 q_1 + 2 q_2 + q_3$.
+  
+  This yields the condition $1 = 3 q_1 + q_2$ or, equivalently, $q_2 = 1 - 3 q_1$. Thus, the set of martingale measures is $\{(q_1, 1 - 3 q_1, 2 q_1)\ \vert\ q_1 \in (0, \frac{1}{3})\}$.
+\end{comment}
+  
+  \item[b.] True of False. If we choose $S^2$ instead of $S^1$ as numeraire, we still generate the same set of martingale measures. (No need to show work.)
+  
+\begin{comment}
+  \textit{Solution}: False. The normalized market with $S^2$ as numeraire is
+  \begin{align*}
+  \ol{Z} = \begin{bmatrix}
+  \frac{1}{2}	& \frac{1}{4}	& \frac{1}{2}	& 1\\
+  1			& 1			& 1			& 1
+  \end{bmatrix}
+  \end{align*}
+  The probability $(\frac{1}{4}, \frac{1}{4}, \frac{1}{2})$ is a martingale measure when $S^1$ is numeraire, but not when $S^2$ is numeraire.
+\end{comment}
+
+  \item[c.] A put option $PutK$ on $S^2$ with strike price $K$ maturing at date 1 is a contingent claim with date 1 payoff $PutK_1 = \max\{K - S^2, 0\}$. What is $Put5_1(\o_i)$ for $i = 1, 2, 3$?
+
+\begin{comment}  
+  \textit{Solution}: $Put5_1 = \begin{bmatrix} 0 & 1 & 3 \end{bmatrix}$.
+\end{comment}
+  
+  \item[d.] Suppose the date 0 price of $Put5$ is $Put5_0 = \frac{7}{8}$. Is the market $(S^1, S^2, Put5)$ arbitrage free?
+
+\begin{comment}  
+  \textit{Solution}: To show $(S^1, S^2, Put5)$ is arbitrage free amounts to finding a martingale measure $Q$ of the normalized market $(1, S^2/S^1)$ with $S^1$ as numeraire such that, in addition, $\frac{7}{8} = \frac{1}{2} \Ex^Q Put5_1$.
+  
+  The above equation plus the characterization of martingale measures for the normalized market $(1, S^2/S^1)$ from part (a) implies $\frac{7}{4} = 1 \cdot (1 - 3q_1) + 3 \cdot (2 q_1)$, which yields $q_1 = \frac{1}{4}$ and a probability $(\frac{1}{4}, \frac{1}{4}, \frac{1}{2})$. Thus, $(S^1, S^2, Put5)$ is arbitrage free because $(\frac{1}{4}, \frac{1}{4}, \frac{1}{2})$ is the unique martingale measure of the corresponding normalized market $(1, S^2/S^1, Put5/S^1)$ with $S^1$ as numeraire.
+\end{comment}
+  
+  
+  \item[e.] Continuing to assume the date 0 price of $Put5$ is $\frac{7}{8}$. What is the arbitrage free date 0 price of $Put4$?
+ 
+\begin{comment} 
+  \textit{Solution}: The arbitrage free date 0 price of $Put4$ is $\frac{1}{2} \Ex^{(\frac{1}{4}, \frac{1}{4}, \frac{1}{2})} Put4_1 = \frac{1}{2} (\frac{1}{2} \cdot 2) = \frac{1}{2}$.
+\end{comment}
+\end{itemize}
+  \item Exercise 3.2.
+  \item Exercise 3.3.
+\end{enumerate}
+
+
+Chapter 4
+
+\begin{enumerate}
+  \item Exercise 4.1.
+  \item Exercise 4.2.
+  \item Let $W$ be Brownian motion.
+  \begin{itemize}
+    \item Let $p$ be any integer $\geq 2$. Provide a formula for $\int_0^t W(s)^{p-1} dW(s)$ that does not involve a stochastic integral.
+    \item Use induction to show that $\Ex W(t)^p = t^{\frac{p}{2}} (p-1)!!$ for all even $p$. (Definition: For an odd number $k$, the expression $k!!$ means $1 \cdot 3 \cdot \ldots \cdot k$. For example, $7!! = 1 \cdot 3 \cdot 5 \cdot 7$.)
+    \item What is $\Ex W(t)^p$ for all odd $p$?
+  \end{itemize}
+  \item Exercise 4.4.
+  \item Exercise 4.5.
+  \item Exercise 4.6.
+  \item Exercise 4.7.
+  \item Exercise 4.8.
+  \item Let $Z_t = t e^{W_t}$ where $W_t$ is Brownian motion. Find $dZ_t$.
+\begin{comment}
+\\
+\\
+\textit{Solution}: By Ito's Lemma
+\begin{align*}
+dZ_t 	&= \{ e^{W_t} + 0 \cdot t e^{W_t} + \frac{1}{2} \cdot 1 \cdot t e^{W_t}\} dt + 1 \cdot t e^{W_t} dW_t\\
+	&= \{e^{W_t} + \frac{1}{2}te^{W_t}\} dt + te^{W_t} dW_t
+\end{align*}
+\end{comment}
+\\
+\\
+\item Let $D_t = (X_t + Y_t)^2$ where $X_t$ and $Y_t$ are two independent Brownian motions. Compute $\Ex D_{10}$.
+\begin{comment}
+\\
+\\
+\textit{Solution}: By Ito's Lemma
+\begin{align*}
+dD_t 	& = \{0 + 0 \cdot 2(X_t + Y_t) + 0 \cdot 2(X_t + Y_t) + \frac{1}{2} (1 \cdot 2 + 0 \cdot 2 + 0 \cdot 2 + 1 \cdot 2)\} dt\\
+		& + 2(X_t + Y_t) dX_t + 2(X_t + Y_t) dY_t\\
+		& = 2 dt + 2(X_t + Y_t) dX_t + 2(X_t + Y_t) dY_t
+\end{align*}
+Thus, $D_{10} - D_0 = D_{10} = \int_0^{10} 2 dt + \int_0^{10} 2(X_t + Y_t) dX_t + \int_0^{10} 2(X_t + Y_t) dY_t$. Taking expectations yields $\Ex D_{10} = \int_0^{10} 2 dt = 20$.
+\end{comment}
+  \item Let $dX_t = X_t dW_t$ where $W_t$ is Brownian motion. Define $Z_t = X_t^{\g}$ where $\g$ is a positive constant. Find $dZ_t$. Simplify the expression so that the SDE is a function of $Z_t$ instead of $X_t$.
+  \item Let $Z_t = \exp(X_t + Y_t - t)$ where $X_t$ and $Y_t$ are two independent Brownian motions. Compute $\Ex Z_{10}$.
+
+\end{enumerate}
+
+
+
+Chapter 5
+\begin{enumerate}
+  \item Exercise 5.1.
+  \item Exercise 5.6.
+  \item Exercise 5.7.
+  \item Exercise 5.8.
+  \item Let $W$ be Brownian motion.
+  \begin{itemize}
+    \item Compute $\Ex e^{a t + b W(t)}$ where $a$ and $b$ are constants.
+    \item Solve the following boundary value problem in the domain $[0, T] \times \R$,
+\begin{align*}
+\frac{\partial F}{\partial t}(t, x) + r x \frac{\partial F}{\partial x}(t, x) + \frac{1}{2}\s^2 x^2 \frac{\partial^2 F}{\partial x^2}(t, x) - r F(t, x)	& = 0\\
+F(T, x)		& = A + Bx
+\end{align*}
+where $r, \s, A, B$ are all constants. Simplify your expression as much as possible.
+  \end{itemize}
+  \item Exercise 5.9.
+  \item Exercise 5.10.
+  \item Exercise 5.11.
+  \item Exercise 5.12.
+  \item Exercise 5.15.
+  \item Exercise 5.16.
+\end{enumerate}
+
+
+
+
+Chapter 6
+
+\begin{enumerate}
+  \item Consider a market with the following assets:
+\begin{align*}
+dB_t		& = 0 dt\\
+dS_t		& = S_t dW_t
+\end{align*}
+with $B_0 = S_0 = 1$.
+
+Introduce the following self-financing portfolio strategy $h_t = (h^B_t, h^S_t)$: At each date, the strategy puts half of the value of the portfolio in $B$ and $S$ each. Derive the stochastic differential equation for $h^S_t$.
+\\
+\\
+(Hint: Assume $h^S_t$ is an Ito process, satisfying $dh^S_t = \mu^S_t dt + \s^S_t dW_t$ for some adapted processes $\mu^S_t$ and $\s^S_t$. Then solve for $\mu^S_t$ and $\s^S_t$.)
+
+\item[] \textbf{In Class}: Let's derive the stochastic differential equation for $h^B_t$.
+
+\end{enumerate}
+
+Chapter 7
+
+\begin{enumerate}
+  \item Exercise 7.2.
+  \item Exercise 7.4.
+  \item Exercise 7.5.
+  \item[] \textbf{In Class}: Exercise 7.7.
+  \item Exercise 7.6.
+  \item Exercise 7.9.
+  \item Consider the following Black-Scholes model over the time interval $[0, T]$:
+\begin{align*}
+dB(t)		& = r B(t) dt\\
+dS(t)		& = \a S(t) dt + \s S(t) dW^P(t)
+\end{align*}
+where $\s > 0, r, \a$ are constants and $W^P$ is Brownian motion under the objective measure $P$. A forward contract on $S(T)^2$ is created at date $t$ with delivery date $T$. Find the forward price by first writing it as an expectation and then simplifying the expression down to a function of $S(t)$.
+  \item Consider the following generalization of the Black-Scholes model over the time interval $[0, T]$:
+\begin{align*}
+dB(t)			& = r B(t) dt\\
+dS(t)			& = \a S(t) dt + \s_1 S(t) dW_1^P(t) + \s_2 S(t) dW_2^P(t)
+\end{align*}
+where $W_1^P$ and $W_2^P$ are \emph{correlated} Brownian motions under the objective measure $P$ with constant correlation $\p > 0$.
+  \begin{itemize}
+    \item Rewrite the SDE for $S$ so that it is being driven by a single Brownian motion under $P$.
+    \item Use the Black-Scholes formula to provide a similar formula for the date $t$ price of the $T$-claim $\max\{S(T)^{\b} - K, 0\}$ where $\b$ and $K > 0$ are constants.
+  \end{itemize}
+\end{enumerate}
+
+
+
+Chapter 8
+
+\begin{enumerate}
+  \item Exercise 8.3.
+\end{enumerate}
+
+Chapter 10
+
+\begin{enumerate}
+  \item 10.1.
+  \item 10.2.
+  \item 10.3.
+  %\item 10.4.
+  \item Consider the following Black-Scholes model over the time interval $[0, T]$:
+\begin{align*}
+dB(t)		& = r B(t) dt\\
+dS(t)		& = \a S(t) dt + \s S(t) dW^P(t)
+\end{align*}
+where $B(0) = S(0) = 1$ and $\s > 0, r, \a$ are constants and $W^P$ is Brownian motion under the objective measure $P$. Introduce the following $T$-claim:
+\begin{align*}
+X = \Phi(S(T)) = 
+\begin{cases}
+K						& \mbox{\ \ \ \ if $S(T) \leq A$}\\
+K+A - S(T)				& \mbox{\ \ \ \ if $S(T) \in [A, K+A]$}\\
+\frac{K+A}{2} - \frac{S(T)}{2}	& \mbox{\ \ \ \ if $S(T) \geq K+A$}
+\end{cases}
+\end{align*}
+  \begin{itemize}
+    \item Create a constant replicating portfolio consisting solely of $B$, $S$ and European call options.
+    \item Let $c(t, s, K)$ and $\D(t, s, K)$ denote the date $t$ price and delta, respectively, of a European call on $S(T)$ maturing at date $T$ with strike $K$ given $S(t) = s$.
+
+Consider the portfolio consisting of a single unit of $X$ at time $t$, given $S(t) = s$ and $B(t) = e^{rt} B(0)$. The holder of the portfolio wants to readjust so that
+\begin{itemize}
+  \item[1.] $\D$ of the portfolio becomes zero,
+  \item[2.] the total value of the portfolio stays the same,
+  \item[3.] the portfolio continues to feature exactly 1 unit of $X$.
+\end{itemize}
+
+Readjustment can only be done by buying/shorting units of the underlying assets, $B$ and $S$. What is the value of the portfolio? How many units of $B$ and $S$ should the readjusted portfolio feature? Express your answers in terms of $c$, $\D$, $t$, and the parameters of the model.
+  \end{itemize}
+  %\item 10.5.
+  \item 10.6.
+  \item \textbf{Project}: Today, you want to create a call option that gives the holder the option to exchange some Tesla stock for some Apple stock on May 7th. Design such an option that would attract a decent amount of investors and figure out a fair price to charge. \emph{There are no right answers. But there are good answers and bad answers.}
+\end{enumerate}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\end{document}

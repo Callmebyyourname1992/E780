@@ -1,72 +1,146 @@
-\documentclass[]{book}
+\documentclass[12pt]{article}
 
-%These tell TeX which packages to use.
-\usepackage{array,epsfig}
-\usepackage{amsmath}
-\usepackage{amsfonts}
-\usepackage{amssymb}
-\usepackage{amsxtra}
-\usepackage{amsthm}
-\usepackage{mathrsfs}
-\usepackage{color}
+\usepackage[utf8]{inputenc}
 
-%Here I define some theorem styles and shortcut commands for symbols I use often
-\theoremstyle{definition}
-\newtheorem{defn}{Definition}
-\newtheorem{thm}{Theorem}
-\newtheorem{cor}{Corollary}
-\newtheorem*{rmk}{Remark}
-\newtheorem{lem}{Lemma}
-\newtheorem*{joke}{Joke}
-\newtheorem{ex}{Example}
-\newtheorem*{soln}{Solution}
-\newtheorem{prop}{Proposition}
 
-\newcommand{\lra}{\longrightarrow}
-\newcommand{\ra}{\rightarrow}
-\newcommand{\surj}{\twoheadrightarrow}
-\newcommand{\graph}{\mathrm{graph}}
-\newcommand{\bb}[1]{\mathbb{#1}}
-\newcommand{\Z}{\bb{Z}}
-\newcommand{\Q}{\bb{Q}}
-\newcommand{\R}{\bb{R}}
-\newcommand{\C}{\bb{C}}
-\newcommand{\N}{\bb{N}}
-\newcommand{\M}{\mathbf{M}}
-\newcommand{\m}{\mathbf{m}}
-\newcommand{\MM}{\mathscr{M}}
-\newcommand{\HH}{\mathscr{H}}
-\newcommand{\Om}{\Omega}
-\newcommand{\Ho}{\in\HH(\Om)}
-\newcommand{\bd}{\partial}
-\newcommand{\del}{\partial}
-\newcommand{\bardel}{\overline\partial}
-\newcommand{\textdf}[1]{\textbf{\textsf{#1}}\index{#1}}
-\newcommand{\img}{\mathrm{img}}
-\newcommand{\ip}[2]{\left\langle{#1},{#2}\right\rangle}
-\newcommand{\inter}[1]{\mathrm{int}{#1}}
-\newcommand{\exter}[1]{\mathrm{ext}{#1}}
-\newcommand{\cl}[1]{\mathrm{cl}{#1}}
-\newcommand{\ds}{\displaystyle}
-\newcommand{\vol}{\mathrm{vol}}
-\newcommand{\cnt}{\mathrm{ct}}
-\newcommand{\osc}{\mathrm{osc}}
-\newcommand{\LL}{\mathbf{L}}
-\newcommand{\UU}{\mathbf{U}}
-\newcommand{\support}{\mathrm{support}}
-\newcommand{\AND}{\;\wedge\;}
-\newcommand{\OR}{\;\vee\;}
-\newcommand{\Oset}{\varnothing}
-\newcommand{\st}{\ni}
-\newcommand{\wh}{\widehat}
+\usepackage{amsmath, amssymb, amsfonts, amsthm, mathrsfs, bm}
+%\usepackage{array, multirow}
+\usepackage{color, float, graphicx, caption, subcaption}
+\usepackage{comment}
 
-%Pagination stuff.
-\setlength{\topmargin}{-.3 in}
-\setlength{\oddsidemargin}{0in}
-\setlength{\evensidemargin}{0in}
-\setlength{\textheight}{9.in}
-\setlength{\textwidth}{6.5in}
-\pagestyle{empty}
+\usepackage{mathtools}%for paired delimiters
+
+\usepackage{hyperref}
+
+\renewcommand{\arraystretch}{1.0}
+
+\captionsetup{font=small}
+\usepackage{setspace}
+\setstretch{1.0}
+%\setlength\topmargin{0in}
+%\setlength\textheight{8in}
+%\setlength\textwidth{5.5in}
+%\setlength\evensidemargin{.5in}
+%\setlength\oddsidemargin{.5in}
+
+\setlength\topmargin{-.45in}
+\setlength\textheight{8.5in}
+\setlength\textwidth{6in}
+\setlength\evensidemargin{.25in}
+\setlength\oddsidemargin{.25in}
+
+
+\graphicspath{{InkscapePics/}}
+
+\newcommand{\executeiffilenewer}[3]{%
+ \ifnum\pdfstrcmp{\pdffilemoddate{#1}}%
+ {\pdffilemoddate{#2}}>0%
+ {\immediate\write18{#3}}\fi%
+}
+\newcommand{\includesvg}[1]{%
+ \executeiffilenewer{#1.svg}{#1.pdf}%
+ {inkscape -z -D --file=#1.svg %
+ --export-pdf=#1.pdf --export-latex}%
+ \input{#1.pdf_tex}%
+}
+
+
+\DeclarePairedDelimiter\ceil{\lceil}{\rceil}
+
+
+\renewcommand{\a}{\alpha}
+\renewcommand{\b}{\beta}
+\renewcommand{\d}{\delta}
+\newcommand{\e}{\varepsilon}
+\newcommand{\g}{\gamma}
+\renewcommand{\k}{\kappa}
+\renewcommand{\l}{\lambda}
+\newcommand{\m}{\mu}
+\renewcommand{\o}{\omega}
+\newcommand{\p}{\rho}
+\newcommand{\s}{\sigma}
+\renewcommand{\t}{\tau}
+\renewcommand{\th}{\theta}
+\newcommand{\z}{\zeta}
+
+
+\newcommand{\ba}{\bm{a}}
+\newcommand{\bg}{\bm{\gamma}}
+\newcommand{\bp}{\bm{p}}
+\newcommand{\bq}{\bm{q}}
+\newcommand{\bmm}{\bm{m}}
+\newcommand{\bmu}{\bm{\mu}}
+\newcommand{\bnu}{\bm{\nu}}
+\newcommand{\bw}{\bm{w}}
+\newcommand{\bx}{\bm{x}}
+\newcommand{\bpi}{\bm{\pi}}
+\newcommand{\bs}{\bm{\sigma}}
+\newcommand{\bS}{\bm{\Sigma}}
+\newcommand{\bth}{\bm{\theta}}
+\newcommand{\bu}{\bm{u}}
+\newcommand{\bv}{\bm{v}}
+
+\newcommand{\bA}{\bm{A}}
+\newcommand{\bH}{\bm{H}}
+\newcommand{\bM}{\bm{M}}
+\newcommand{\bW}{\bm{W}}
+\newcommand{\bX}{\bm{X}}
+
+\newcommand{\rp}{{_{r}p}}
+\newcommand{\rD}{{_{r}\D}}
+\newcommand{\sD}{{_{s}\D}}
+
+
+
+\newcommand{\A}{\mathcal{A}}
+\newcommand{\C}{\mathcal{C}}
+\newcommand{\D}{\Delta}
+\newcommand{\mD}{\mathcal{D}}
+\newcommand{\E}{\mathcal{E}}
+\newcommand{\F}{\mathcal{F}}
+\newcommand{\G}{\mathscr{G}}
+\renewcommand{\H}{\mathcal{H}}
+\newcommand{\I}{\mathcal{I}}
+\newcommand{\M}{\mathcal{M}}
+\renewcommand{\O}{\Omega}
+\newcommand{\Pt}{\mathscr{P}}
+\renewcommand{\P}{\mathcal{P}}
+\newcommand{\Q}{\mathcal{Q}}
+\newcommand{\R}{\mathbb{R}}
+\renewcommand{\S}{\mathcal{S}}
+\newcommand{\T}{\mathcal{T}}
+\newcommand{\Th}{\Theta}
+\newcommand{\Y}{\mathcal{Y}}
+\newcommand{\V}{\mathscr{V}}
+\newcommand{\Z}{\mathbb{Z}}
+
+
+\newcommand{\ol}{\overline}
+\newcommand{\oll}[1]{\overline{\overline{ #1}}}
+\newcommand{\ul}{\underline}
+\newcommand{\Ex}{\mathbf{E}}
+\renewcommand{\Pr}{\mathbf{P}}
+\newcommand{\td}{\tilde}
+\newcommand{\tr}{\triangleleft}
+
+\newtheorem{lemma}{Lemma}
+\newtheorem*{example}{Example}
+\newtheorem{theorem}{Theorem}
+\newtheorem{proposition}{Proposition}
+\newtheorem*{definition}{Definition}
+\newtheorem*{maxminrefinement}{Max-Min Threshold Refinement}
+\newtheorem*{multimaxminrefinement}{Multi-Worker Max-Min Threshold Refinement}
+\newtheorem*{refinement}{An Intuitive Credible Threats Refinement}
+\newtheorem*{minrefinement}{Minimal Refinement}
+\newtheorem{corollary}{Corollary}
+\newtheorem{observation}{Observation}
+\newtheorem{remark}{Remark}
+\newtheorem{assumption}{Assumption}
+\newtheorem*{efficiency}{Efficiency Wage Contract}
+
+\DeclareMathOperator*{\argmax}{arg\,max}
+\DeclareMathOperator*{\argmin}{arg\,min}
+\DeclareMathOperator{\sgn}{sgn}
 
 
 
@@ -84,34 +158,61 @@ Due:  %You should write the date here.
 
 \subsection*{Exercises for chapter 3}
 
+\begin{enumerate}
+
+
+
+
+\item Exercise 1
 
 
 
 
 
 
+\item Exercise 2.\\
+ Consider augmented the matrix.\\
+ 
+  $\ol{D}=
+    \left[\begin{array}{llll}
+    1 & 1 & 2 & 3\\
+    \end{array}
+    \right].$ 
+    \\
+    
+    There is no arbitrage. since there only 1 matrix, so the only choice to make the value of the profolio is zero in day zero is buy nothing, but it will turnout that the value of the porlio at day 1 will be zero. So there will be no arbitrage opportunity.\\
+    
+    let $Q(w_{1}), Q(w_{2}), Q(w_{3})$be Martingale measure for the market.\\
+    We have the formular.\\
+    
+    $$1 = \beta(Q(w_{1}+2Q(w_{}{2})+3Q(w_{3}))$$ and\\ 
+ 
+
+
+
+$$Q(w_{1}) +  Q(w_{2})+ Q(w_{3}) = 1$$. \\ 
+For some $\beta$\\
+For simplicity, I will use $Q_{1}, Q_{2}, Q_{3}$ instead of $Q(w_{1}), Q(w_{2}), Q(w_{3})$
+
+$$1 = \beta(Q(w_{1}+2Q(w_{}{2})+3Q(w_{3})) \implies \frac{1}{\beta} = Q_{1} + 2 Q_{2} +3 Q_{3}$$\\
+Let write $Q_{1} = 1-Q_{2}-Q_{3}$ and substitiue to the equation above, we obtain:\\
+$$\frac{1}{\beta} = 1-Q_{2}-Q_{3} + 2 Q_{2} +3 Q_{3} = 1+Q_{2}+2Q_{3} \implies Q_{2} =\frac{1}{\beta} - 1 - 2Q_{3} $$
+again, substitute $Q_{2} = 1-Q_{1}-Q_{3}$ Obtain\\
+$$\frac{1}{\beta} = Q_{1} + 2(1-Q_{1}-Q_{3}) +3 Q_{3}  = 2-Q_{1}+Q_{3} \implies Q_{1} = 2-\frac{1}{\beta}+Q_{3}$$.\\ Now we will find the bounds for $Q_{2}$ to be legitimate probability measure.
+\begin{itemize}
+\item $0<Q_{1}<1 \implies 0<2-\frac{1}{\beta}+Q_{3}<1 \implies \frac{1}{\beta} -2 < Q_{3} < \frac{1}{\beta} - 1$
+\item $0<Q_{2}<1 \implies 0<\frac{1}{\beta} - 1 - 2Q_{3} <1 \implies \frac{\frac{1}{\beta} - 2}{2} < Q_{3}<\frac{\frac{1}{\beta}-1}{2}$\\
+Combine these two inequalities.\\ 
+$$\frac{1-2\beta}{2\beta} < Q_{3}<\frac{1-\beta}{2\beta}$$
+Hence the family of martingale measure can be writte as:\\
+$$\{2-\frac{1}{\beta}+Q_{3},\frac{1}{\beta} - 1 - 2Q_{3} ,Q_{3} \mid \frac{1-2\beta}{2\beta} < Q_{3}<\frac{1-\beta}{2\beta} \}$$
+
+\end{itemize}•
 
 
 
 
-
-
-
-
-
-
-\end{proof}
-
-
-
-
-
-
-
-
-
-
-
+Solve for this system of equation, we can find the family of martingale measure.
 
 
 
@@ -143,6 +244,34 @@ Due:  %You should write the date here.
 
 
 \end{enumerate}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 \end{document}
 
 
