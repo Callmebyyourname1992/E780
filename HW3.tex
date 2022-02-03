@@ -1,0 +1,226 @@
+\documentclass[12pt]{article}
+
+\usepackage[utf8]{inputenc}
+
+
+\usepackage{amsmath, amssymb, amsfonts, amsthm, mathrsfs, bm}
+%\usepackage{array, multirow}
+\usepackage{color, float, graphicx, caption, subcaption}
+\usepackage{comment}
+
+\usepackage{mathtools}%for paired delimiters
+
+\usepackage{hyperref}
+
+\renewcommand{\arraystretch}{1.0}
+
+\captionsetup{font=small}
+\usepackage{setspace}
+\setstretch{1.0}
+%\setlength\topmargin{0in}
+%\setlength\textheight{8in}
+%\setlength\textwidth{5.5in}
+%\setlength\evensidemargin{.5in}
+%\setlength\oddsidemargin{.5in}
+
+\setlength\topmargin{-.45in}
+\setlength\textheight{8.5in}
+\setlength\textwidth{6in}
+\setlength\evensidemargin{.25in}
+\setlength\oddsidemargin{.25in}
+
+
+\graphicspath{{InkscapePics/}}
+
+\newcommand{\executeiffilenewer}[3]{%
+ \ifnum\pdfstrcmp{\pdffilemoddate{#1}}%
+ {\pdffilemoddate{#2}}>0%
+ {\immediate\write18{#3}}\fi%
+}
+\newcommand{\includesvg}[1]{%
+ \executeiffilenewer{#1.svg}{#1.pdf}%
+ {inkscape -z -D --file=#1.svg %
+ --export-pdf=#1.pdf --export-latex}%
+ \input{#1.pdf_tex}%
+}
+
+
+\DeclarePairedDelimiter\ceil{\lceil}{\rceil}
+
+
+\renewcommand{\a}{\alpha}
+\renewcommand{\b}{\beta}
+\renewcommand{\d}{\delta}
+\newcommand{\e}{\varepsilon}
+\newcommand{\g}{\gamma}
+\renewcommand{\k}{\kappa}
+\renewcommand{\l}{\lambda}
+\newcommand{\m}{\mu}
+\renewcommand{\o}{\omega}
+\newcommand{\p}{\rho}
+\newcommand{\s}{\sigma}
+\renewcommand{\t}{\tau}
+\renewcommand{\th}{\theta}
+\newcommand{\z}{\zeta}
+
+
+\newcommand{\ba}{\bm{a}}
+\newcommand{\bg}{\bm{\gamma}}
+\newcommand{\bp}{\bm{p}}
+\newcommand{\bq}{\bm{q}}
+\newcommand{\bmm}{\bm{m}}
+\newcommand{\bmu}{\bm{\mu}}
+\newcommand{\bnu}{\bm{\nu}}
+\newcommand{\bw}{\bm{w}}
+\newcommand{\bx}{\bm{x}}
+\newcommand{\bpi}{\bm{\pi}}
+\newcommand{\bs}{\bm{\sigma}}
+\newcommand{\bS}{\bm{\Sigma}}
+\newcommand{\bth}{\bm{\theta}}
+\newcommand{\bu}{\bm{u}}
+\newcommand{\bv}{\bm{v}}
+
+\newcommand{\bA}{\bm{A}}
+\newcommand{\bH}{\bm{H}}
+\newcommand{\bM}{\bm{M}}
+\newcommand{\bW}{\bm{W}}
+\newcommand{\bX}{\bm{X}}
+
+\newcommand{\rp}{{_{r}p}}
+\newcommand{\rD}{{_{r}\D}}
+\newcommand{\sD}{{_{s}\D}}
+
+
+
+\newcommand{\A}{\mathcal{A}}
+\newcommand{\C}{\mathcal{C}}
+\newcommand{\D}{\Delta}
+\newcommand{\mD}{\mathcal{D}}
+\newcommand{\E}{\mathcal{E}}
+\newcommand{\F}{\mathcal{F}}
+\newcommand{\G}{\mathscr{G}}
+\renewcommand{\H}{\mathcal{H}}
+\newcommand{\I}{\mathcal{I}}
+\newcommand{\M}{\mathcal{M}}
+\renewcommand{\O}{\Omega}
+\newcommand{\Pt}{\mathscr{P}}
+\renewcommand{\P}{\mathcal{P}}
+\newcommand{\Q}{\mathcal{Q}}
+\newcommand{\R}{\mathbb{R}}
+\renewcommand{\S}{\mathcal{S}}
+\newcommand{\T}{\mathcal{T}}
+\newcommand{\Th}{\Theta}
+\newcommand{\Y}{\mathcal{Y}}
+\newcommand{\V}{\mathscr{V}}
+\newcommand{\Z}{\mathbb{Z}}
+
+
+\newcommand{\ol}{\overline}
+\newcommand{\oll}[1]{\overline{\overline{ #1}}}
+\newcommand{\ul}{\underline}
+\newcommand{\Ex}{\mathbf{E}}
+\renewcommand{\Pr}{\mathbf{P}}
+\newcommand{\td}{\tilde}
+\newcommand{\tr}{\triangleleft}
+
+\newtheorem{lemma}{Lemma}
+\newtheorem*{example}{Example}
+\newtheorem{theorem}{Theorem}
+\newtheorem{proposition}{Proposition}
+\newtheorem*{definition}{Definition}
+\newtheorem*{maxminrefinement}{Max-Min Threshold Refinement}
+\newtheorem*{multimaxminrefinement}{Multi-Worker Max-Min Threshold Refinement}
+\newtheorem*{refinement}{An Intuitive Credible Threats Refinement}
+\newtheorem*{minrefinement}{Minimal Refinement}
+\newtheorem{corollary}{Corollary}
+\newtheorem{observation}{Observation}
+\newtheorem{remark}{Remark}
+\newtheorem{assumption}{Assumption}
+\newtheorem*{efficiency}{Efficiency Wage Contract}
+
+\DeclareMathOperator*{\argmax}{arg\,max}
+\DeclareMathOperator*{\argmin}{arg\,min}
+\DeclareMathOperator{\sgn}{sgn}
+
+
+
+\begin{document}
+
+
+\begin{center}
+{\Large Econ 780 \hspace{0.5cm} HW Chapter 3}\\
+\textbf{Minh Cao, Grant Smith, Ella Barnes, Alexander Erwin and Mark Coomes}\\ %You should put your name here
+Due:  %You should write the date here.
+\end{center}
+
+\vspace{0.2 cm}
+
+
+\subsection*{Exercises for chapter 3}
+Exercise 1
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\end{document}
+
+
