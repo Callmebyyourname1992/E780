@@ -150,7 +150,7 @@
 \begin{center}
 {\Large Econ 780 \hspace{0.5cm} HW Week 2}\\
 \textbf{Minh Cao, Grant Smith, Ella Barnes, Alexander Erwin and Mark Coomes}\\ %You should put your name here
-Due:  %You should write the date here.
+Due: 2 February 2022 %You should write the date here.
 \end{center}
 
 \vspace{0.2 cm}
@@ -168,7 +168,7 @@ $$d_{0} = (1,1,1)^{T} = z_{1} (1,0,0)^{T} + z_{2}(0,1,0)^{T} + z_{3}(0,0,1)^{T}$
 Since $z_{1} =1, z_{2} =1, z_{3}=1$ are nonnegative.Q.E.D\\
 \item No solution for Problem 2
 
-Suppose there exist $h =(x,y,z) \in R^{3}$\\ such that:
+Suppose there exists $h =(x,y,z) \in R^{3}$\\ such that:
 
 $$hd_{0} = x+y+z<0$$ and\\
 $$hd_{j} \geq 0, j =1,2,3$$ 
@@ -180,7 +180,7 @@ Clearly $z_{1}, z_{2}, z_{3} \geq 0$. and  $d_{0} = (a,b,c)^{T} = a(1,0,0)^{T} +
 The solution is simply (a,b,c)
 \item No solution for problem 2
 
-Suppose there exist $h =(x,y,z) \in R^{3}$ such that:\\
+Suppose there exists $h =(x,y,z) \in R^{3}$ such that:\\
 
 $$hd_{0}<0 $$ and\\
 $$hd_{j} \geq 0, j =1,2,3 $$
@@ -206,11 +206,11 @@ WLOG, suppose $a < 0$.\\
 For problem 2, let $h = (1,0,0)$, we have\\
 $$hd_{0} = a < 0 $$ and\\
 $$hd_{1} = 1, hd_{2} = hd_{3} =0 $$ Q.E.D.\\
-In general, put zero in the place that $d_{0} $ doesn't have negative coordinate and 1 in the place that $d_{0} $ have negative coordinate.\\
+In general, put zero in the place that $d_{0} $ doesn't have negative coordinate and 1 in the place that $d_{0} $ has a negative coordinate.\\
 \item For problem 1.\\
 Suppose there exist $z_{1},z_{2},z_{3} \geq 0$ such that.\\
 $$(a,b,c)^{T} = z_{1}d_{1}+z_{2}d_{2}+z_{3}d_{3}= (z_{1},z_{2},z_{3})^{T}$$
-Hence there at least one i such that $z_{i}<0$.Q.E.D
+Hence there is at least one i such that $z_{i}<0$.Q.E.D
 
 
 
@@ -239,10 +239,10 @@ Exercise 2.\\
     \right].$ 
     \\
     
-    There is no arbitrage. since there only 1 matrix, so the only choice to make the value of the profolio is zero in day zero is buy nothing, but it will turnout that the value of the porlio at day 1 will be zero. So there will be no arbitrage opportunity.\\
+    There is no arbitrage. since there is only 1 matrix, the only choice to make the value of the profolio zero in day zero is buy nothing, but it will turnout that the value of the porlio at day 1 will be zero. So there will be no arbitrage opportunity.\\
     
     let $Q(w_{1}), Q(w_{2}), Q(w_{3})$be Martingale measure for the market.\\
-    We have the formular.\\
+    We have the formula.\\
     
     $$1 = \beta(Q(w_{1}+2Q(w_{}{2})+3Q(w_{3}))$$ and\\ 
  
@@ -254,7 +254,7 @@ For some $\beta$\\
 For simplicity, I will use $Q_{1}, Q_{2}, Q_{3}$ instead of $Q(w_{1}), Q(w_{2}), Q(w_{3})$
 
 $$1 = \beta(Q(w_{1}+2Q(w_{}{2})+3Q(w_{3})) \implies \frac{1}{\beta} = Q_{1} + 2 Q_{2} +3 Q_{3}$$\\
-Let write $Q_{1} = 1-Q_{2}-Q_{3}$ and substitiue to the equation above, we obtain:\\
+Write $Q_{1} = 1-Q_{2}-Q_{3}$ and substitiue to the equation above, we obtain:\\
 $$\frac{1}{\beta} = 1-Q_{2}-Q_{3} + 2 Q_{2} +3 Q_{3} = 1+Q_{2}+2Q_{3} \implies Q_{2} =\frac{1}{\beta} - 1 - 2Q_{3} $$
 again, substitute $Q_{2} = 1-Q_{1}-Q_{3}$ Obtain\\
 $$\frac{1}{\beta} = Q_{1} + 2(1-Q_{1}-Q_{3}) +3 Q_{3}  = 2-Q_{1}+Q_{3} \implies Q_{1} = 2-\frac{1}{\beta}+Q_{3}$$.\\ Now we will find the bounds for $Q_{2}$ to be legitimate probability measure.
@@ -289,7 +289,7 @@ the equation:\\
 $2 = 2\alpha_{1} +\ frac{25}{12}\alpha_{2} + 2(1- \alpha_{1} -\alpha_{2}) \implies \alpha_{2} = 0$  a contradiction. hence the market is not arbitrage free.\\
 % We dont need this part for this problem, just point out the arbitrage porfolio.
 
-In fact, in the original market. Let consider the portfolio $h= (-2,1)$, hence ${V_{0}}^{h}= -2+2 = 0$ and $P({V_{1}}^{h} \geq 0) = 1, P({V_{1}}^{h} >0) >0$ Q.E.D
+In fact, in the original market. Consider the portfolio $h= (-2,1)$, hence ${V_{0}}^{h}= -2+2 = 0$ and $P({V_{1}}^{h} \geq 0) = 1, P({V_{1}}^{h} >0) >0$ Q.E.D
  
 
 
