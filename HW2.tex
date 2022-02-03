@@ -273,24 +273,24 @@ $$\{2-\frac{1}{\beta}+Q_{3},\frac{1}{\beta} - 1 - 2Q_{3} ,Q_{3} \mid \frac{1-2\b
     2 & 2.4 & 2.5 & 2.4
     \end{array}
     \right]$.
-   
-  Let transfer the market to nomarlized market Z:
-  
-  $D^{Z} =
- \left[\begin{array}{llll}
-    1 & 1& 1 & 1 \\
-    2 & 2& \frac{2.5}{1.2} & 2
-    \end{array}
-    \right]$..\\
     
-Here asset 1 is risk-free asset with the interest rate i $0$.\\
-let $\alpha_{1}, \alpha_{2}, \alpha_{3} $strictly positive and $\alpha_{1} +\alpha_{2}+ \alpha_{3}=1$
-the equation:\\
-$2 = 2\alpha_{1} +\ frac{25}{12}\alpha_{2} + 2(1- \alpha_{1} -\alpha_{2}) \implies \alpha_{2} = 0$  a contradiction. hence the market is not arbitrage free.\\
-% We dont need this part for this problem, just point out the arbitrage porfolio.
+Consider the arbitrage portfolio:\\
 
-In fact, in the original market. Let consider the portfolio $h= (-2,1)$, hence ${V_{0}}^{h}= -2+2 = 0$ and $P({V_{1}}^{h} \geq 0) = 1, P({V_{1}}^{h} >0) >0$ Q.E.D
+$h= (-2,1)$, hence ${V_{0}}^{h}= -2+2 = 0$ and $P({V_{1}}^{h} \geq 0) = 1, P({V_{1}}^{h} >0) >0$ Q.E.D
+   
+Let $q_{1}, q_{2}, q_{3} \geq 0, q_{1} + q_{2} + q_{3} =1 $ be a measure that satisfies: 
+$${S_{0}}^{i} = \frac{1}{1+R}E^{Q}{S_{1}}^{i}$$ for $i = 1,2$\\
+Clearly, True for $i = 1$\\
+For $i =2$:\\
+
+$${S_{0}}^{i} = \frac{1}{1+R}E^{Q}{S_{1}}^{i} \implies 2.4 = 2.4q_{1}+2.5q_{2}+2.4q_{3}\\
+$$
+$$\implies 2.4 = 2.4(q_{1}+q_{3})+2.4q_{2} \implies 2.4 = 2.4(1-q_{2}) +2.5Q_{2}$$\\
+$$\implies 2.4 = 2.4 -2.4q_{2}+2.5q_{2}\implies q_{2}=0$$
+
+
  
+In this part, the measure that satisfies ${S_{0}}^{i} = \frac{1}{1+R}E^{Q}{S_{1}}^{i}$ for $i = 1,2$ is not the ``martingale measure''. since we have to put zero weight in $q_{2}$. Compare to the first bullet point, we can have an infinitely many martingale measure that satisfies the condition.
 
 
 \end{itemize}
