@@ -177,6 +177,7 @@ $$hd_{j} \geq 0, j =1,2,3 \implies x,y,z \geq 0 \implies x+y+z \geq 0$$A contrad
 \item $d_{0} = (a,b,c)^{T}, a,b,c \geq 0$.\\
 let $z_{1} = a, z_{2} =b, z_{3} = c$.\\
 Clearly $z_{1}, z_{2}, z_{3} \geq 0$. and  $d_{0} = (a,b,c)^{T} = a(1,0,0)^{T} + b(0,1,0)^{T} + c(0,0,1)^{T} = z_{1} (1,0,0)^{T} + z_{2}(0,1,0)^{T} + z_{3}(0,0,1)^{T} = z_{1}d_{1} +z_{2}d_{2}+z_{3}d_{3} $. Q.E.D\\
+The solution is simply (a,b,c)
 \item No solution for problem 2
 
 Suppose there exist $h =(x,y,z) \in R^{3}$ such that:\\
@@ -184,14 +185,15 @@ Suppose there exist $h =(x,y,z) \in R^{3}$ such that:\\
 $$hd_{0}<0 $$ and\\
 $$hd_{j} \geq 0, j =1,2,3 $$
 $hd_{0}<0 \implies ax+by+cz < 0$\\
+If a, b, and c are all positive, at least one of x, y, and z must be negative.
 $ hd_{j} \geq 0, j =1,2,3 \implies x,y,z \geq 0$\\
-since $a,b,c \geq 0 \implies ax+by+cz \geq 0$ a contraction.Q.E.D
+This is essentially selecting the components because each d is a euclidian basis vector. So here we are saying that all of x, y, and z are positive. This is the contradiction. Since $a,b,c \geq 0 \implies ax+by+cz \geq 0$ a contraction.Q.E.D
 
 \item $d_{0} = (-1,-1,-1)^{T}$\\
 Suppose there exist $z_{1},z_{2},z_{3} \geq 0$ such that.\\
 $$(-1,-1,-1)^{T} = d_{0} = z_{1}d_{1}+z_{2}d_{2}
 +z_{3}d_{3} = (z_{1},z_{2},z_{3})^{T}$$\\
-Hence $z_{1}=z_{2}=z_{3}=-1$ A contradiction.Q.E.D
+Hence $z_{1}=z_{2}=z_{3}=-1$ Here, we have found a solution, and in this solution, at least one component is negative (in fact all are).  And because our matrix is invertible, there is only a single solution to the equation, namely this solution. Therefore, there cannot be a solution with all components positive.
 
 Prove there exist a solution for problem 2.\\
 Let $h=(1,1,1)$\\
