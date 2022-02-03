@@ -157,21 +157,78 @@ Due:  %You should write the date here.
 
 
 \subsection*{Exercises for chapter 3}
+Exercise 1
+\begin{itemize}
 
-\begin{enumerate}
+\item Let $d_{0} = (1,1,1)^{T}, d_{1} =(1,0,0)^{T}, d_{2} = (0,1,0)^{T},d_{3} =(0,0,1)^{T}$.\\
+
+Let $z_{1} =1, z_{2} =1, z_{3} = 1$\\
+Hence: 
+$$d_{0} = (1,1,1)^{T} = z_{1} (1,0,0)^{T} + z_{2}(0,1,0)^{T} + z_{3}(0,0,1)^{T}$$\\
+Since $z_{1} =1, z_{2} =1, z_{3}=1$ are nonnegative.Q.E.D\\
+\item No solution for Problem 2
+
+Suppose there exist $h =(x,y,z) \in R^{3}$\\ such that:
+
+$$hd_{0} = x+y+z<0$$ and\\
+$$hd_{j} \geq 0, j =1,2,3$$ 
+$$hd_{j} \geq 0, j =1,2,3 \implies x,y,z \geq 0 \implies x+y+z \geq 0$$A contradiction. Q.E.D
+
+\item $d_{0} = (a,b,c)^{T}, a,b,c \geq 0$.\\
+let $z_{1} = a, z_{2} =b, z_{3} = c$.\\
+Clearly $z_{1}, z_{2}, z_{3} \geq 0$. and  $d_{0} = (a,b,c)^{T} = a(1,0,0)^{T} + b(0,1,0)^{T} + c(0,0,1)^{T} = z_{1} (1,0,0)^{T} + z_{2}(0,1,0)^{T} + z_{3}(0,0,1)^{T} = z_{1}d_{1} +z_{2}d_{2}+z_{3}d_{3} $. Q.E.D\\
+\item No solution for problem 2
+
+Suppose there exist $h =(x,y,z) \in R^{3}$ such that:\\
+
+$$hd_{0}<0 $$ and\\
+$$hd_{j} \geq 0, j =1,2,3 $$
+$hd_{0}<0 \implies ax+by+cz < 0$\\
+$ hd_{j} \geq 0, j =1,2,3 \implies x,y,z \geq 0$\\
+since $a,b,c \geq 0 \implies ax+by+cz \geq 0$ a contraction.Q.E.D
+
+\item $d_{0} = (-1,-1,-1)^{T}$\\
+Suppose there exist $z_{1},z_{2},z_{3} \geq 0$ such that.\\
+$$(-1,-1,-1)^{T} = d_{0} = z_{1}d_{1}+z_{2}d_{2}
++z_{3}d_{3} = (z_{1},z_{2},z_{3})^{T}$$\\
+Hence $z_{1}=z_{2}=z_{3}=-1$ A contradiction.Q.E.D
+
+Prove there exist a solution for problem 2.\\
+Let $h=(1,1,1)$\\
+We have
+$$hd_{0} = -3<0 $$ and\\
+$$hd_{j}  = 1 \geq 0, j =1,2,3 $$Q.E.D
+
+\item $d_{0} = (a,b,c)^{T}$, at least one coordinate is negative.\\
+WLOG, suppose $a < 0$.\\
+For problem 2, let $h = (1,0,0)$, we have\\
+$$hd_{0} = a < 0 $$ and\\
+$$hd_{1} = 1, hd_{2} = hd_{3} =0 $$ Q.E.D.\\
+In general, put zero in the place that $d_{0} $ doesn't have negative coordinate and 1 in the place that $d_{0} $ have negative coordinate.\\
+\item For problem 1.\\
+Suppose there exist $z_{1},z_{2},z_{3} \geq 0$ such that.\\
+$$(a,b,c)^{T} = z_{1}d_{1}+z_{2}d_{2}+z_{3}d_{3}= (z_{1},z_{2},z_{3})^{T}$$
+Hence there at least one i such that $z_{i}<0$.Q.E.D
 
 
 
 
-\item Exercise 1
 
 
 
 
 
 
-\item Exercise 2.\\
- Consider augmented the matrix.\\
+
+
+
+
+
+
+
+
+Exercise 2.\\
+ Consider the augmented matrix.\\
  
   $\ol{D}=
     \left[\begin{array}{llll}
@@ -199,7 +256,7 @@ Let write $Q_{1} = 1-Q_{2}-Q_{3}$ and substitiue to the equation above, we obtai
 $$\frac{1}{\beta} = 1-Q_{2}-Q_{3} + 2 Q_{2} +3 Q_{3} = 1+Q_{2}+2Q_{3} \implies Q_{2} =\frac{1}{\beta} - 1 - 2Q_{3} $$
 again, substitute $Q_{2} = 1-Q_{1}-Q_{3}$ Obtain\\
 $$\frac{1}{\beta} = Q_{1} + 2(1-Q_{1}-Q_{3}) +3 Q_{3}  = 2-Q_{1}+Q_{3} \implies Q_{1} = 2-\frac{1}{\beta}+Q_{3}$$.\\ Now we will find the bounds for $Q_{2}$ to be legitimate probability measure.
-\begin{itemize}
+
 \item $0<Q_{1}<1 \implies 0<2-\frac{1}{\beta}+Q_{3}<1 \implies \frac{1}{\beta} -2 < Q_{3} < \frac{1}{\beta} - 1$
 \item $0<Q_{2}<1 \implies 0<\frac{1}{\beta} - 1 - 2Q_{3} <1 \implies \frac{\frac{1}{\beta} - 2}{2} < Q_{3}<\frac{\frac{1}{\beta}-1}{2}$\\
 Combine these two inequalities.\\ 
@@ -234,7 +291,7 @@ In fact, in the original market. Let consider the portfolio $h= (-2,1)$, hence $
  
 
 
-\end{itemize}•
+\end{itemize}
 
 
 
@@ -270,7 +327,6 @@ In fact, in the original market. Let consider the portfolio $h= (-2,1)$, hence $
 
 
 
-\end{enumerate}
 
 
 
