@@ -275,69 +275,27 @@ As in the book, denote the two assets by $S^1$ and $S^2$.
 \end{comment}
 \end{itemize}
   \item Exercise 3.2.
+  \begin{itemize}
+      \item If $X$ is replicable, then:
+      $$\exists h; hS_1 = X$$
+      \item Now, using the definition of the value of a portfolio:
+      $$V_0^h = hS_0$$
+      \item If there is no arbitrage, then there is a column vector, $z$ such that $S_0$ can be formed by $z$'s scaling of $S_1$'s columns. Thus,
+      $$\exists z; S_0 = S_1z$$
+      \item We can use this equation with the second bullet to get:
+      $$V_0^h = hS_0 = hS_1z$$
+      \item If we want to turn z into a vector that scales to 1 (to make it a probability measure), we would want to divide its components by the sum of all the components, i.e. to normalize it. So to do this, we can multiply and divide by the sum, and we can call the new normalized z, q:
+      $$V_0^h = hS_0 = hS_1z \frac{\Sigma z_i}{\Sigma z_i} = \Sigma z_i * hS_1q $$
+      \item But we know that $\Sigma z_i$ has a name, and it is $\beta$, which is also $1/1+R$. Thus,
+      $$V_0^h = hS_0 = hS_1z \frac{\Sigma z_i}{\Sigma z_i} = \Sigma z_i * hS_1q =  \frac{1}{1+R}hS_1q$$
+      \item Now we use our existence in the very first step, which is our replicating portfolio.  Thus, we get (and removing the intermediate steps):
+      $$V_0^h =  \frac{1}{1+R}hS_1q = \frac{1}{1+R}Xq $$
+      \item And lastly, we say that $Xq$ is the expectation of $X$ under $S$:
+      $$V_0^h = \frac{1}{1+R}Xq = \frac{1}{1+R}\mathbb{E}^Q[X]$$
+  \end{itemize}
   \item Exercise 3.3.
 
 \end{enumerate}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 \end{document}
