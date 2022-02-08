@@ -294,6 +294,17 @@ As in the book, denote the two assets by $S^1$ and $S^2$.
       $$V_0^h = \frac{1}{1+R}Xq = \frac{1}{1+R}\mathbb{E}^Q[X]$$
   \end{itemize}
   \item Exercise 3.3.
+  \begin{itemize}
+      \item We want to prove that the arbitrage free price of an claim $X$ is given by:
+      $$\Pi (0,X) = \mathbb{E}^P[\Lambda (\omega) X(\omega)]$$
+      \item We start with the definition of $\Lambda (\omega)$:
+      $$\Lambda (\omega) = \frac{1}{1+R} L(\omega) = \frac{1}{1+R} \frac{q_i}{p_i}$$
+      \item We now substitute this into the first equation:
+            $$\Pi (0,X) = \mathbb{E}^P[\frac{1}{1+R} \frac{q_i}{p_i} X(\omega)] = \frac{1}{1+R}\mathbb{E}^P[ \frac{q_i}{p_i} X(\omega)]$$
+        \item We now expand the expectation:
+        $$\Pi (0,X)  = \mathbb{E}^P[\Lambda (\omega) X(\omega)] = \frac{1}{1+R}\mathbb{E}^Q [X] $$
+        Which was our goal.
+  \end{itemize}
 
 \end{enumerate}
 
