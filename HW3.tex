@@ -356,6 +356,25 @@ As in the book, denote the two assets by $S^1$ and $S^2$.
       \item And lastly, we say that $Xq$ is the expectation of $X$ under $S$:
       $$V_0^h = \frac{1}{1+R}Xq = \frac{1}{1+R}\mathbb{E}^Q[X]$$
   \end{itemize}
+  Alternative prove:\\
+   \begin{itemize}
+      \item If $X$ is replicable, then:
+      $$\exists h; hS_1 = X$$
+      \item Now, using the definition of the value of a portfolio:
+      $$V_0^h = hS_0$$
+      Suppose the statement wrong, then there exist martingale $Q' \neq Q$ such that:
+      $$\frac{1}{1+R}E^Q[X] \neq \frac{1}{1+R}E^{\prime}[X] $$
+     Since Q and $Q' $are martingale measure We have:
+      $$\frac{1}{1+R}E^Q[S_1] =\frac{1}{1+R}E^{\prime}[S_1] $$
+      Implies:
+      $$\frac{1}{1+R}E^Q[hS_1] =\frac{1}{1+R}E^{\prime}[hS_1]$$
+      Implies:
+      $$\frac{1}{1+R}E^Q[X] = \frac{1}{1+R}E^{\prime}[X] $$
+      A contradiction.\\
+      For the second claim:
+     $$ V_0^h = hS_0 = h \frac{1}{1+R}E^{\prime}[S_1] = h \frac{1}{1+R}E^Q[S_1] = \frac{1}{1+R}E^Q[hS_1] = \frac{1}{1+R}E^Q[X]$$
+    
+\end{itemize}
   \item Exercise 3.3.
   \begin{itemize}
       \item We want to prove that the arbitrage free price of an claim $X$ is given by:
