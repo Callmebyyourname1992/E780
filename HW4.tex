@@ -1,0 +1,230 @@
+\documentclass[12pt]{article}
+
+\usepackage[utf8]{inputenc}
+
+
+\usepackage{amsmath, amssymb, amsfonts, amsthm, mathrsfs, bm}
+%\usepackage{array, multirow}
+\usepackage{color, float, graphicx, caption, subcaption}
+\usepackage{comment}
+
+\usepackage{mathtools}%for paired delimiters
+
+\usepackage{hyperref}
+
+\renewcommand{\arraystretch}{1.0}
+
+\captionsetup{font=small}
+\usepackage{setspace}
+\setstretch{1.0}
+%\setlength\topmargin{0in}
+%\setlength\textheight{8in}
+%\setlength\textwidth{5.5in}
+%\setlength\evensidemargin{.5in}
+%\setlength\oddsidemargin{.5in}
+
+\setlength\topmargin{-.45in}
+\setlength\textheight{8.5in}
+\setlength\textwidth{6in}
+\setlength\evensidemargin{.25in}
+\setlength\oddsidemargin{.25in}
+
+
+\graphicspath{{InkscapePics/}}
+
+\newcommand{\executeiffilenewer}[3]{%
+ \ifnum\pdfstrcmp{\pdffilemoddate{#1}}%
+ {\pdffilemoddate{#2}}>0%
+ {\immediate\write18{#3}}\fi%
+}
+\newcommand{\includesvg}[1]{%
+ \executeiffilenewer{#1.svg}{#1.pdf}%
+ {inkscape -z -D --file=#1.svg %
+ --export-pdf=#1.pdf --export-latex}%
+ \input{#1.pdf_tex}%
+}
+
+
+\DeclarePairedDelimiter\ceil{\lceil}{\rceil}
+
+
+\renewcommand{\a}{\alpha}
+\renewcommand{\b}{\beta}
+\renewcommand{\d}{\delta}
+\newcommand{\e}{\varepsilon}
+\newcommand{\g}{\gamma}
+\renewcommand{\k}{\kappa}
+\renewcommand{\l}{\lambda}
+\newcommand{\m}{\mu}
+\renewcommand{\o}{\omega}
+\newcommand{\p}{\rho}
+\newcommand{\s}{\sigma}
+\renewcommand{\t}{\tau}
+\renewcommand{\th}{\theta}
+\newcommand{\z}{\zeta}
+
+
+\newcommand{\ba}{\bm{a}}
+\newcommand{\bg}{\bm{\gamma}}
+\newcommand{\bp}{\bm{p}}
+\newcommand{\bq}{\bm{q}}
+\newcommand{\bmm}{\bm{m}}
+\newcommand{\bmu}{\bm{\mu}}
+\newcommand{\bnu}{\bm{\nu}}
+\newcommand{\bw}{\bm{w}}
+\newcommand{\bx}{\bm{x}}
+\newcommand{\bpi}{\bm{\pi}}
+\newcommand{\bs}{\bm{\sigma}}
+\newcommand{\bS}{\bm{\Sigma}}
+\newcommand{\bth}{\bm{\theta}}
+\newcommand{\bu}{\bm{u}}
+\newcommand{\bv}{\bm{v}}
+
+\newcommand{\bA}{\bm{A}}
+\newcommand{\bH}{\bm{H}}
+\newcommand{\bM}{\bm{M}}
+\newcommand{\bW}{\bm{W}}
+\newcommand{\bX}{\bm{X}}
+
+\newcommand{\rp}{{_{r}p}}
+\newcommand{\rD}{{_{r}\D}}
+\newcommand{\sD}{{_{s}\D}}
+
+
+
+\newcommand{\A}{\mathcal{A}}
+\newcommand{\C}{\mathcal{C}}
+\newcommand{\D}{\Delta}
+\newcommand{\mD}{\mathcal{D}}
+\newcommand{\E}{\mathcal{E}}
+\newcommand{\F}{\mathcal{F}}
+\newcommand{\G}{\mathscr{G}}
+\renewcommand{\H}{\mathcal{H}}
+\newcommand{\I}{\mathcal{I}}
+\newcommand{\M}{\mathcal{M}}
+\renewcommand{\O}{\Omega}
+\newcommand{\Pt}{\mathscr{P}}
+\renewcommand{\P}{\mathcal{P}}
+\newcommand{\Q}{\mathcal{Q}}
+\newcommand{\R}{\mathbb{R}}
+\renewcommand{\S}{\mathcal{S}}
+\newcommand{\T}{\mathcal{T}}
+\newcommand{\Th}{\Theta}
+\newcommand{\Y}{\mathcal{Y}}
+\newcommand{\V}{\mathscr{V}}
+\newcommand{\Z}{\mathbb{Z}}
+
+
+\newcommand{\ol}{\overline}
+\newcommand{\oll}[1]{\overline{\overline{ #1}}}
+\newcommand{\ul}{\underline}
+\newcommand{\Ex}{\mathbf{E}}
+\renewcommand{\Pr}{\mathbf{P}}
+\newcommand{\td}{\tilde}
+\newcommand{\tr}{\triangleleft}
+
+\newtheorem{lemma}{Lemma}
+\newtheorem*{example}{Example}
+\newtheorem{theorem}{Theorem}
+\newtheorem{proposition}{Proposition}
+\newtheorem*{definition}{Definition}
+\newtheorem*{maxminrefinement}{Max-Min Threshold Refinement}
+\newtheorem*{multimaxminrefinement}{Multi-Worker Max-Min Threshold Refinement}
+\newtheorem*{refinement}{An Intuitive Credible Threats Refinement}
+\newtheorem*{minrefinement}{Minimal Refinement}
+\newtheorem{corollary}{Corollary}
+\newtheorem{observation}{Observation}
+\newtheorem{remark}{Remark}
+\newtheorem{assumption}{Assumption}
+\newtheorem*{efficiency}{Efficiency Wage Contract}
+
+\DeclareMathOperator*{\argmax}{arg\,max}
+\DeclareMathOperator*{\argmin}{arg\,min}
+\DeclareMathOperator{\sgn}{sgn}
+
+
+
+\begin{document}
+
+
+\begin{center}
+{\Large Econ 780 \hspace{0.5cm} HW Chapter 4}\\
+\textbf{Minh Cao, Grant Smith, Ella Barnes, Alexander Erwin and Mark Coomes}\\ %You should put your name here
+Due:  %You should write the date here.
+\end{center}
+
+\vspace{0.2 cm}
+
+\section{Exercise 4.4}
+$dX_t=\alpha X_tdt+\sigma_tdW_t$ when $\alpha\in R + \sigma$ is adapted\\
+find $E[X_t]$\\
+$\int X_t\,dt + \alpha\int X_t\,dt + \int \sigma_t\,dW_t$\\
+$EX_t = \alpha\int E[X_t]\,dt$\\
+$E[X_t] = \alpha\int_{s=0}^{s=t} m_s\,ds + m_s$\\
+$M_t = \alpha\int_{s=0}^{s=t} m_s\,ds +m$\\
+$M_t^* = \alpha M_t \rightarrow M_t = E^{\alpha t} + M_0$
+
+\section{Exercise 4.5}
+$dX_t=\alpha X_tdt+\sigma_tdW_t$ and $U_t\geq 0$ with $P=1$ for all $k>0$ show that $X$ is submartingale\\
+$E[X_t\mid F_S] \geq X_S$ with $S\leq t$\\
+$X_t = \int_{0}^{t} \mu_t\,dt + \int_{0}^{t} \sigma_t\,dWt + X_0$\\
+And for martingale: $dX_t = g_tdWt$\\
+$E[X_t] = \int_{0}^{t} E(\mu_p)\,dp + X_0$\\
+$=\int_{0}^{t} m_p\,dp + X_0$ where $m_s\geq 0$\\
+thus $E[X_t] - E[X_s] = \int_{0}^{t} m_p\,dp - \int_{0}^{s} m_p\,dp$\\
+$=\int_{s}^{t} m_p\,dp \geq 0$\\
+
+Alternate proof:\\
+$X_t = \int_{0}^{t} \mu_t\,dt + \int_{0}^{t}\,dWp + X_0$\\
+$X_t = \int_{0}^{t} \mu_t\,dt + \int_{0}^{t}\,dWp + X_S$\\
+$E[X_t] = \int_{s}^{t} E[\mu_p]\,dp + 0 + E[X_S]$\\
+$E[X_t] = \int_{s}^{t} m_p\,dp + E[X_S]$ where $m_p\geq0$\\
+but $E[X_t\mid F_S] = \int_{s}^{t} m_p\,dp + E[X_S\mid F_S]$\\
+$= \int_{s}^{t} m_p\,dp + X_S$ which is then deterministic due to the filter\\
+thus $E[X_t\mid F_S] \geq X_S$
+
+\section{Exercise 4.6}
+Set $X_t = h(x_1,x_2, \cdots x_n)$
+The Wieness is given by:\\
+$W_1(t), \cdots , W_n(t)$
+Apple Ito formula:\\
+$$dX_t = \frac{1}{2}\left[\sum_{i,j =1}^n\frac{\partial^2h}{\partial x_i \partial x_j}dW_i(t)dW_j(t)  \right] + \sum_{i=1}^n \frac{\partial h}{\partial x_i}dW_i(t)$$
+
+Intergate both sides:\\
+
+$$X_t = \int_0^t \sum_{i=1}^n \frac{\partial h}{\partial x_i}dW_i(t) + \int_0^t \frac{1}{2}\left[\sum_{i,j =1}^n\frac{\partial^2h}{\partial x_i \partial x_j}dW_i(t)dW_j(t)  \right]$$\\
+$$X_t =  \int_0^t \sum_{i=1}^n \frac{\partial h}{\partial x_i}dW_i(t) +\frac{1}{2} \int_0^t \left[\sum_{i \neq j}^n\frac{\partial^2h}{\partial x_i \partial x_j}dW_i(t)dW_j(t)  \right] + \frac{1}{2} \int_0^t \left[\sum_{i=j=1}^n\frac{\partial^2h}{\partial {x_i}^2}{dW_i(t)}^2 \right]$$ 
+$$X_t =  \int_0^t \sum_{i=1}^n \frac{\partial h}{\partial x_i}dW_i(t) +\frac{1}{2} \int_0^t \left[\sum_{i \neq j}^n\frac{\partial^2h}{\partial x_i \partial x_j}dW_i(t)dW_j(t)  \right] + \frac{1}{2} \int_0^t \left[\sum_{i=j=1}^n\frac{\partial^2h}{\partial {x_i}^2}ds \right]$$ 
+
+Let the middle term = A, we have:\\
+$$X_t =  \int_0^t \sum_{i=1}^n \frac{\partial h}{\partial x_i}dW_i(s) + \frac{1}{2} \int_0^t \left[\sum_{i=j=1}^n\frac{\partial^2h}{\partial {x_i}^2}ds \right] + A$$ 
+
+We have:\\
+$$dW_i dW_j = \rho_{i,j}t = 0$$
+Since $W_i$ and $W_j$ are independent, $\rho{i,j} = 0$.\\
+Hence $A=0$\\
+
+
+Take expectation both sides, conditional on the filtration $F_W$.\\
+
+$$E(X_t \mid F_S) =  E\left[ \int_0^t \sum_{i=1}^n \frac{\partial h}{\partial x_i}dW_i(s)\mid F_S \right] + \frac{1}{2} E\int_0^t \left[\sum_{i=j=1}^n\frac{\partial^2h}{\partial {x_i}^2}ds \mid F_S \right] $$
+Implies:\\
+\begin{multline*}
+E(X_t \mid F_S) =  E\left[ \int_0^s \sum_{i=1}^n \frac{\partial h}{\partial x_i}dW_i(s)\mid F_S \right] + \frac{1}{2} E\int_0^s\left[\sum_{i=j=1}^n\frac{\partial^2h}{\partial {x_i}^2}ds \mid F_S \right]  \\
++E\left[ \int_s^t \sum_{i=1}^n \frac{\partial h}{\partial x_i}dW_i(s)\mid F_S \right] + \frac{1}{2} E\int_s^t \left[\sum_{i=j=1}^n\frac{\partial^2h}{\partial {x_i}^2}ds \mid F_S \right] 
+\end{multline*}
+Implies:\\
+$$E(X_t \mid F_S) = X(S) + E\left[ \int_s^t \sum_{i=1}^n \frac{\partial h}{\partial x_i}dW_i(s)\mid F_S \right] + \frac{1}{2} E\int_s^t \left[\sum_{i=j=1}^n\frac{\partial^2h}{\partial {x_i}^2}ds \mid F_S \right] $$
+
+We have h is harmonic, so:\\
+$$\sum_{i=1}^n \frac{\partial^2 h}{\partial x_i^2} = 0 \implies \frac{1}{2} E\int_s^t \left[\sum_{i=j=1}^n\frac{\partial^2h}{\partial {x_i}^2}ds \mid F_S \right] = 0$$
+Also:\\
+ $$E\left[ \int_s^t \sum_{i=1}^n \frac{\partial h}{\partial x_i}dW_i(s)\mid F_S \right] = 0$$ Since it is an expectation of a stochastic intergal.\\
+ Hence $E(X_t \mid F_S] = X(S)$.QED
+ Similarly for h is a subharmonic function.
+ 
+
+
+    
+
+\end{document}
